@@ -44,33 +44,5 @@
             value="255,0,0">
       </colorDefinition>
    </extension>
-   <extension
-         id="dockerProjectNature"
-         point="org.eclipse.core.resources.natures">
-      <runtime>
-         <run
-               class="eu.openanalytics.editor.docker.projectbuild.DockerProjectNature">
-         </run>
-      </runtime>
-      <builder
-            id="eu.openanalytics.editor.docker.dockerProjectBuilder">
-      </builder>
-   </extension>
-   <extension
-         id="dockerProjectBuilder"
-         point="org.eclipse.core.resources.builders">
-      <builder
-            hasNature="true">
-         <run
-               class="eu.openanalytics.editor.docker.projectbuild.DockerProjectBuilder">
-         </run>
-      </builder>
-   </extension>
-   <extension
-         point="org.eclipse.ui.startup">
-      <startup
-            class="eu.openanalytics.editor.docker.projectbuild.DockerFileListener">
-      </startup>
-   </extension>
 
 </plugin>

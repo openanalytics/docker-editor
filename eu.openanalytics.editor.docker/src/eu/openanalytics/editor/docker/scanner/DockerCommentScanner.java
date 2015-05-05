@@ -8,7 +8,7 @@ import org.eclipse.jface.text.rules.IToken;
 import org.eclipse.jface.text.rules.RuleBasedScanner;
 import org.eclipse.jface.text.rules.Token;
 
-import eu.openanalytics.editor.docker.SyntaxColors;
+import eu.openanalytics.editor.docker.syntax.SyntaxColors;
 
 public class DockerCommentScanner extends RuleBasedScanner {
 

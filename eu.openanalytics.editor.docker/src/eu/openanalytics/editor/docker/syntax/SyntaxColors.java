@@ -1,4 +1,4 @@
-package eu.openanalytics.editor.docker;
+package eu.openanalytics.editor.docker.syntax;
 
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.ui.PlatformUI;
