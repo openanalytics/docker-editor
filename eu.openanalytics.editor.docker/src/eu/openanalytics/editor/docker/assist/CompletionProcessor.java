@@ -1,6 +1,9 @@
 package eu.openanalytics.editor.docker.assist;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -14,6 +17,7 @@ import org.eclipse.jface.text.contentassist.IContextInformationValidator;
 
 import eu.openanalytics.editor.docker.Activator;
 import eu.openanalytics.editor.docker.scanner.InstructionWordRule;
+import eu.openanalytics.editor.docker.util.AssetLoader;
 
 public class CompletionProcessor implements IContentAssistProcessor {
 
@@ -21,6 +25,9 @@ public class CompletionProcessor implements IContentAssistProcessor {
 	private static final IContextInformation[] NO_CONTEXTS = {};
 	private static final char[] PROPOSAL_ACTIVATION_CHARS = {};
 	private static final char[] INFO_ACTIVATION_CHARS = {};
+	
+	private static final String ADDITIONAL_INFO_PATH = "assets/additional-info";
+	private Map<String, String> additionalInfos = new HashMap<String, String>();
 	
 	@Override
 	public ICompletionProposal[] computeCompletionProposals(ITextViewer viewer, int offset) {
@@ -34,7 +41,7 @@ public class CompletionProcessor implements IContentAssistProcessor {
 			boolean isNewLine = (offset == 0) || (document.getChar(offset - 1) == '\n');
 			if (isNewLine) {
 				for (String instr: InstructionWordRule.INSTRUCTIONS) result.add(new CompletionProposal(
-						instr, lineOffset, 0, instr.length(), null, instr, null, "Additional info forthcoming"));
+						instr, lineOffset, 0, instr.length(), null, instr, null, getAdditionalInfo(instr)));
 			}
 
 			boolean isFirstWord = true;
@@ -46,7 +53,7 @@ public class CompletionProcessor implements IContentAssistProcessor {
 				for (int i=lineOffset; i<offset; i++) prefix += document.getChar(i);
 				for (String instr: InstructionWordRule.INSTRUCTIONS) {
 					if (instr.toLowerCase().startsWith(prefix.toLowerCase())) result.add(new CompletionProposal(
-							instr, lineOffset, prefix.length(), instr.length(), null, instr, null, "Additional info forthcoming"));
+							instr, lineOffset, prefix.length(), instr.length(), null, instr, null, getAdditionalInfo(instr)));
 				}	
 			}
 
@@ -82,4 +89,19 @@ public class CompletionProcessor implements IContentAssistProcessor {
 		return null;
 	}
 
+	private String getAdditionalInfo(String instruction) {
+		if (additionalInfos.containsKey(instruction)) return additionalInfos.get(instruction);
+		
+		String additionalInfo = "";
+		String targetFile = ADDITIONAL_INFO_PATH + "/" + instruction + ".html";
+		try {
+			byte[] htmlContents = AssetLoader.loadAsset(targetFile);
+			if (htmlContents != null) additionalInfo = new String(htmlContents);
+		} catch (IOException e) {
+			Activator.log(IStatus.WARNING, "Failed to load additional info file for instruction " + instruction, e);
+		}
+		
+		additionalInfos.put(instruction, additionalInfo);
+		return additionalInfo;
+	}
 }
