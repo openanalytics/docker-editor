@@ -26,7 +26,7 @@ public class CompletionProcessor implements IContentAssistProcessor {
 	public ICompletionProposal[] computeCompletionProposals(ITextViewer viewer, int offset) {
 		try {
 			IDocument document = viewer.getDocument();
-			ArrayList<ICompletionProposal> result = new ArrayList<>();
+			ArrayList<ICompletionProposal> result = new ArrayList<ICompletionProposal>();
 			
 			int lineNr = document.getLineOfOffset(offset);
 			int lineOffset = document.getLineOffset(lineNr);

@@ -24,7 +24,9 @@ public class DockerEditor extends TextEditor {
 			IResource resource = (IResource) getEditorInput().getAdapter(IResource.class);
 			IDocument document = getDocumentProvider().getDocument(getEditorInput());
 			new SyntaxProblemReporter().checkAndApply(document, 0, document.getLength(), resource);
-		} catch (CoreException | BadLocationException e) {
+		} catch (CoreException e) {
+			Activator.log(IStatus.ERROR, "Failed to perform syntax check", e);
+		} catch (BadLocationException e) {
 			Activator.log(IStatus.ERROR, "Failed to perform syntax check", e);
 		}
 		super.doSave(progressMonitor);
