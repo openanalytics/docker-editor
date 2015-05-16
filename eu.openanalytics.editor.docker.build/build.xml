@@ -50,15 +50,23 @@
 	</target>
 
 	<target name="copy-output">
-		<delete dir="${dist.dir}"/>
-		<mkdir dir="${dist.dir}"/>
-		<copy todir="${dist.dir}">
-			<fileset dir="${buildDirectory}/buildRepo">
-				<include name="*/**"/>
-			</fileset>
-		</copy>
+	        <delete dir="${dist.dir}"/>
+	        <mkdir dir="${dist.dir}"/>
+	        <copy todir="${dist.dir}">
+	            <fileset dir="${buildDirectory}/buildRepo">
+	                <include name="*/**"/>
+	            </fileset>
+	        </copy>
 	</target>
 	
-	<target name="build" depends="init, pde-build, copy-output" />
+	<target name="archive-update-site">
+		<zip destfile="${buildDirectory}/docker-editor.zip"
+		       basedir="${buildDirectory}/buildRepo"
+		  />
+	</target>
+	
+	
+	
+	<target name="build" depends="init, pde-build, archive-update-site" />
 	
 </project>
