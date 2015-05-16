@@ -59,6 +59,6 @@
 		</copy>
 	</target>
 	
-	<target name="build" depends="clean, init, pde-build, copy-output" />
+	<target name="build" depends="init, pde-build, copy-output" />
 	
 </project>
