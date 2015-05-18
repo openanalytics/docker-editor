@@ -9,7 +9,6 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.ITextViewer;
-import org.eclipse.jface.text.contentassist.CompletionProposal;
 import org.eclipse.jface.text.contentassist.ICompletionProposal;
 import org.eclipse.jface.text.contentassist.IContentAssistProcessor;
 import org.eclipse.jface.text.contentassist.IContextInformation;
@@ -40,8 +39,7 @@ public class CompletionProcessor implements IContentAssistProcessor {
 			
 			boolean isNewLine = (offset == 0) || (document.getChar(offset - 1) == '\n');
 			if (isNewLine) {
-				for (String instr: InstructionWordRule.INSTRUCTIONS) result.add(new CompletionProposal(
-						instr, lineOffset, 0, instr.length(), null, instr, null, getAdditionalInfo(instr)));
+				for (String instr: InstructionWordRule.INSTRUCTIONS) result.add(new CompletionProposal(instr, lineOffset, 0, getAdditionalInfo(instr)));
 			}
 
 			boolean isFirstWord = true;
@@ -52,8 +50,7 @@ public class CompletionProcessor implements IContentAssistProcessor {
 				String prefix = "";
 				for (int i=lineOffset; i<offset; i++) prefix += document.getChar(i);
 				for (String instr: InstructionWordRule.INSTRUCTIONS) {
-					if (instr.toLowerCase().startsWith(prefix.toLowerCase())) result.add(new CompletionProposal(
-							instr, lineOffset, prefix.length(), instr.length(), null, instr, null, getAdditionalInfo(instr)));
+					if (instr.toLowerCase().startsWith(prefix.toLowerCase())) result.add(new CompletionProposal(instr, lineOffset, prefix.length(), getAdditionalInfo(instr)));
 				}	
 			}
 
