@@ -3,18 +3,19 @@
       id="eu.openanalytics.editor.docker"
       label="Dockerfile Editor"
       version="1.0.0.qualifier"
-      provider-name="OpenAnalytics">
+      provider-name="Open Analytics">
 
-   <description url="http://www.example.com/description">
-      [Enter Feature Description here.]
+   <description url="http://docker-editor.openanalytics.eu/description">
+      Eclipse Plugin for Editing Dockerfiles
    </description>
 
-   <copyright url="http://www.example.com/copyright">
-      [Enter Copyright Description here.]
+   <copyright url="http://docker-editor.openanalytics.eu/copyright">
+      (c) Copyright Open Analytics NV 2015. All rights reserved
    </copyright>
 
-   <license url="http://www.example.com/license">
-      [Enter License Description here.]
+   <license url="license.html">
+      The Docker Editor feature is released by Open Analytics NV under the terms\n\
+      of the Eclipse Public License, version 1.0.\n\
    </license>
 
    <plugin
