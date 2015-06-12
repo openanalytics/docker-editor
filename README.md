@@ -9,6 +9,7 @@
 
 # Eclipse Plugin for Editing Dockerfiles
 
-Update site available at [http://docker-editor.openanalytics.eu/update](http://docker-editor.openanalytics.eu/update).
+- Update site available at [http://docker-editor.openanalytics.eu/update](http://docker-editor.openanalytics.eu/update).
+- See the [wiki guide](https://github.com/openanalytics/docker-editor/wiki/Getting-Started-with-Dockerfile-Editor) to get started with the editor
 
 #### Copyright (c) Copyright of Open Analytics NV, 2015 - ECLIPSE PUBLIC LICENSE version 1.0
