@@ -16,14 +16,15 @@ public class InstructionWordRule extends WordRule {
 	public static final String[] INSTRUCTIONS;
 	
 	private static final String INSTRUCTION_FILE_PATH = "assets/instructions.txt";
-	private static final String INSTRUCTION_FILE_SEPARATOR = System.getProperty("line.separator");
 	
 	// Load instructions from the text file.
 	static {
 		String[] loadedInstructions = new String[0];
 		try {
 			byte[] contents = AssetLoader.loadAsset(INSTRUCTION_FILE_PATH);
-			loadedInstructions = new String(contents).split(INSTRUCTION_FILE_SEPARATOR);
+			String contentsString = new String(contents);
+			String lineSeparator = (contentsString.contains("\r\n")) ? "\r\n" : "\n"; 
+			loadedInstructions = contentsString.split(lineSeparator);
 		} catch (IOException e) {
 			Activator.log(IStatus.WARNING, "No content assist available: error while reading instruction file: " + INSTRUCTION_FILE_PATH, e);
 		}
