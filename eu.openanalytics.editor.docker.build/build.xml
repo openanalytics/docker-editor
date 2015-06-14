@@ -17,7 +17,7 @@
 	<property name="pde.build.dir" refid="pde.build.dir.path" />
 
 	<target name="clean">
-		<delete dir="${buildDirectory}" />
+		<delete dir="${buildDirectory}/buildRepo" />
 	</target>
 		
 	<target name="init">
@@ -67,6 +67,6 @@
 	
 	
 	
-	<target name="build" depends="init, pde-build, archive-update-site" />
+	<target name="build" depends="clean, init, pde-build, archive-update-site" />
 	
 </project>
