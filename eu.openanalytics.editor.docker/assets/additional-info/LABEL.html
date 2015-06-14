@@ -1,6 +1,17 @@
 <p>
-This is a HTML snippet containing additional information on the <b>LABEL</b> instruction.
+<b>LABEL</b> adds meta-data to an image using one or more key-value pairs.
 </p>
 <p>
-It will be displayed in the yellow content-assist box that appears next to a code completion suggestion when the user selects it.
+<pre>
+LABEL Description="Docker Image for running the R Service Bus" Vendor="Open Analytics NV" Version="6.2"
+
+LABEL com.example.label-without-value
+LABEL com.example.label-with-value="foo"
+LABEL version="1.0"
+LABEL description="This text illustrates \
+that label-values can span multiple lines."
+</pre>
+</p>
+<p>
+N.B. Image labels can be viewed using the <pre>docker inspect </pre> command. 
 </p>

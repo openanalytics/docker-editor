@@ -1,6 +1,15 @@
 <p>
-This is a HTML snippet containing additional information on the <b>FROM</b> instruction.
+<b>FROM</b> sets the base image starting from which the image is built.
 </p>
 <p>
-It will be displayed in the yellow content-assist box that appears next to a code completion suggestion when the user selects it.
+<pre>
+FROM ubuntu
+
+FROM ubuntu:14.04
+
+FROM java:8u45-jdk
+</pre>
+</p>
+<p>
+<b>FROM</b> must be the first non-comment instruction in the Dockerfile 
 </p>

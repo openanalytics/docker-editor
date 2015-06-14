@@ -1,6 +1,10 @@
 <p>
-This is a HTML snippet containing additional information on the <b>VOLUME</b> instruction.
+<b>VOLUME</b> creates a mount point with the specified name
 </p>
 <p>
-It will be displayed in the yellow content-assist box that appears next to a code completion suggestion when the user selects it.
+<pre>
+VOLUME ["/data"]           # specified as a JSON array
+VOLUME /var/log
+VOLUME /var/log /var/db
+</pre>
 </p>

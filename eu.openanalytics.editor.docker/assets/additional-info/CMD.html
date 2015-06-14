@@ -1,6 +1,17 @@
 <p>
-This is a HTML snippet containing additional information on the <b>CMD</b> instruction.
+<b>CMD</b> provides defaults for an executing container
 </p>
 <p>
-It will be displayed in the yellow content-assist box that appears next to a code completion suggestion when the user selects it.
+There are three ways to specify a CMD: the (preferred) exec form
+<pre>
+CMD ["executable", "param1", "param2"]
+</pre>
+as default parameters to ENTRYPOINT:
+<pre>
+CMD ["param1","param2"]
+</pre>
+and in shell form
+<pre>
+CMD command param1 param2
+</pre>
 </p>

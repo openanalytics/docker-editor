@@ -1,6 +1,13 @@
 <p>
-This is a HTML snippet containing additional information on the <b>ENTRYPOINT</b> instruction.
+<b>ENTRYPOINT</b> configures a container that will be run as an executable.
 </p>
 <p>
-It will be displayed in the yellow content-assist box that appears next to a code completion suggestion when the user selects it.
+There are two ways to specify an ENTRYPOINT: the (preferred) exec form
+<pre>
+ENTRYPOINT ["executable", "param1", "param2"]
+</pre>
+and the shell form:
+<pre>
+ENTRYPOINT command param1 param2
+</pre>
 </p>

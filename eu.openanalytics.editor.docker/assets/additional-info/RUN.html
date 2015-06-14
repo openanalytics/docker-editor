@@ -1,6 +1,13 @@
 <p>
-This is a HTML snippet containing additional information on the <b>RUN</b> instruction.
+<b>RUN</b> executes any commands in a new layer on top of the current image and commits the results 
 </p>
 <p>
-It will be displayed in the yellow content-assist box that appears next to a code completion suggestion when the user selects it.
+There are two ways to specify a RUN: the exec form
+<pre>
+RUN ["executable", "param1", "param2"]
+</pre>
+and the shell form:
+<pre>
+RUN command param1 param2
+</pre>
 </p>
