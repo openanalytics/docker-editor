@@ -17,6 +17,8 @@
 	<property name="pde.build.dir" refid="pde.build.dir.path" />
 
 	<target name="clean">
+		<delete dir="${buildDirectory}/features" />
+		<delete dir="${buildDirectory}/plugins" />
 		<delete dir="${buildDirectory}/buildRepo" />
 	</target>
 		
