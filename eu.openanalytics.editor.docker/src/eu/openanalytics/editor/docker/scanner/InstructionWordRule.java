@@ -33,6 +33,7 @@ public class InstructionWordRule extends WordRule {
 	
 	public InstructionWordRule(IToken instructionToken) {
 		super(new InstructionWordDetector(), Token.UNDEFINED, true);
+		setColumnConstraint(0);
 		for (String instruction: INSTRUCTIONS) addWord(instruction, instructionToken);
 	}
 
