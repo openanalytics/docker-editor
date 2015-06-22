@@ -51,24 +51,29 @@
 		</java>
 	</target>
 
-	<target name="copy-output">
-	        <delete dir="${dist.dir}"/>
-	        <mkdir dir="${dist.dir}"/>
-	        <copy todir="${dist.dir}">
-	            <fileset dir="${buildDirectory}/buildRepo">
-	                <include name="*/**"/>
-	            </fileset>
-	        </copy>
+	<target name="categorize-update-site">
+		<!-- Apply categorization to the p2 repository -->
+		<java classname="org.eclipse.equinox.launcher.Main" fork="true" failonerror="true">
+			<arg value="-application" />
+			<arg value="org.eclipse.equinox.p2.publisher.CategoryPublisher" />
+			<arg value="-metadataRepository" />
+			<arg value="file:/${buildDirectory}/buildRepo" />
+			<arg value="-categoryDefinition" />
+			<arg value="file:${basedir}/category.xml" />
+			<arg value="-categoryQualifier" />
+			<arg value="-compress" />
+			<classpath>
+				<pathelement location="${equinox.launcher}" />
+			</classpath>
+		</java>
 	</target>
-	
+
 	<target name="archive-update-site">
 		<zip destfile="${buildDirectory}/docker-editor.zip"
 		       basedir="${buildDirectory}/buildRepo"
 		  />
 	</target>
 	
-	
-	
-	<target name="build" depends="clean, init, pde-build, archive-update-site" />
+	<target name="build" depends="clean, init, pde-build, categorize-update-site, archive-update-site" />
 	
 </project>
